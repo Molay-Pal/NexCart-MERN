@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db");
+const connectDB = require("./config/db.js");
 const path = require("path");
-const userRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/authRoutes.js");
 
 dotenv.config();
 connectDB();
@@ -25,9 +25,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", userRoutes);
 app.use("/api/products", require("./routes/productRoutes.js"));
-app.use("/api/orders", require("./routes/orderRoutes"));
-app.use("/api/payment", require("./routes/paymentRoutes"));
-app.use("/api/analytics", require("./routes/analyticsRoutes"));
+app.use("/api/orders", require("./routes/orderRoutes.js"));
+app.use("/api/payment", require("./routes/paymentRoutes.js"));
+app.use("/api/analytics", require("./routes/analyticsRoutes.js"));
 
 // Serve frontend in production
 if (process.env.NODE_ENV === "production") {
